@@ -9,6 +9,10 @@ import java.beans.PropertyChangeSupport;
  */
 public class Produto {
 
+    @Override
+    public String toString() {
+        return descricao;
+    }
      private Integer codigo;
      
     private String descricao;

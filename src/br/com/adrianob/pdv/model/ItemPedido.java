@@ -9,7 +9,22 @@ import java.beans.PropertyChangeSupport;
  */
 public class ItemPedido {
 
-            private float valorUnitario;
+        private float quantidade;
+
+    public static final String PROP_QUANTIDADE = "quantidade";
+
+    public float getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(float quantidade) {
+        float oldQuantidade = this.quantidade;
+        this.quantidade = quantidade;
+        propertyChangeSupport.firePropertyChange(PROP_QUANTIDADE, oldQuantidade, quantidade);
+    }
+
+    
+    private float valorUnitario;
 
     public static final String PROP_VALORUNITARIO = "valorUnitario";
 
@@ -61,5 +76,7 @@ public class ItemPedido {
         propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
-    
+    public float getSubtotal(){
+        return this.valorUnitario*this.quantidade;
+    }   
 }
